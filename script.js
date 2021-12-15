@@ -13,6 +13,30 @@ let techs = [
     'node',
     'react'];
 
+        let cards = null;
+
+        startGame();
+
+        function startGame () {
+             cards = createcardsFromTechs(techs);
+             shuffleCards(cards)
+             console.log(cards)
+        }
+
+        function shuffleCards(cards){
+            let currentIndex = cards.length;
+            let randomIndex = 0;
+
+            while (currentIndex !== 0) {
+                randomIndex = Math.floor(Math.random() * currentIndex)
+                currentIndex--;
+
+                [cards[randomIndex], cards[currentIndex] = cards[currentIndex], cards[randomIndex]]
+
+            }
+        }
+
+
     createcardsFromTechs(techs);
     function createcardsFromTechs(techs) {
 
