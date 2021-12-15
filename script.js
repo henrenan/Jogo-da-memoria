@@ -1,5 +1,6 @@
 const FRONT = "card_front"
 const BACK = "card_back"
+const CARD = "card"
 
 let techs = [
     'bootstrap',
@@ -20,7 +21,27 @@ let techs = [
         function startGame () {
              cards = createcardsFromTechs(techs);
              shuffleCards(cards)
-             console.log(cards)
+               
+             initializeCards(cards);
+        }
+
+        function initializeCards(cards) {
+            let gameBoard = document.getElementById("gameBoard")
+            
+            cards.forEach(card=>{
+
+                let cardElement = document.createElement('div');
+                cardElement.id = card.id;
+                cardElement.classList.add(CARD); 
+                cardElement.dataset.icon = card.icon;
+
+                cardElement.addEventListener('click', flipCard)
+                gameBoard.appendChild(cardElement);
+            })
+        }
+
+        function createCardContent(card, cardElement){
+
         }
 
         function shuffleCards(cards){
@@ -42,9 +63,9 @@ let techs = [
 
         let cards = [];
 
-        for(let tech of techs){
+        techs.forEach((tech) =>{
             cards.push(createPairFromTech(tech));
-        }
+        })
         
         return cards.flatMap(pair => pair);
     }
@@ -66,3 +87,9 @@ let techs = [
         return tech + parseInt(Math.random()*1000);
 
     }
+
+    function flipCard(){
+
+    }
+
+    6,31
