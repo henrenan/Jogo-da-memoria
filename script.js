@@ -1,6 +1,7 @@
 const FRONT = "card_front"
 const BACK = "card_back"
 const CARD = "card"
+const ICON = "icon"
 
 let techs = [
     'bootstrap',
@@ -35,6 +36,8 @@ let techs = [
                 cardElement.classList.add(CARD); 
                 cardElement.dataset.icon = card.icon;
 
+                createCardContent(card, cardElement)
+
                 cardElement.addEventListener('click', flipCard)
                 gameBoard.appendChild(cardElement);
             })
@@ -42,7 +45,25 @@ let techs = [
 
         function createCardContent(card, cardElement){
 
+            createCardFace(FRONT, card, cardElement)
+            createCardFace(BACK, card, cardElement)
+
         }
+
+        function createCardFace(face, card, element) {
+            let cardElementFace = document.createElement('div');
+            cardElementFace.classList.add(face);
+            if(face === FRONT){
+                let iconElement =  document.createElement('img');
+                iconElement.classList.add(ICON)
+                iconElement.src = "./imagens/" + card.icon + ".png"
+
+            }else{
+                cardElementFace.innerHTML = "&lt/&gt";
+            }
+        }
+        
+
 
         function shuffleCards(cards){
             let currentIndex = cards.length;
