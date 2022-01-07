@@ -1,5 +1,38 @@
 let game = {
 
+    locMode: false,
+    firstCard: null,
+    secondCard: null,
+
+    setCard: function (id) {
+
+        let card = this.cards.filter(card => card.id === id)[0]
+
+        if (card.flipped || this.locMode) {
+            return false;
+        }
+
+        if(!this.firstCard){
+            this.firstCard = card;
+            return true;
+        }else{
+            this.secondCard = card;
+            this.lockMode = true;
+            return true;
+        }
+
+    },
+
+    checkMatch: function () {
+        return this.firstCard.icon === this.secondCard.icon;
+    },
+
+    clearCards: function () {
+        this.firstCard = null;
+        this.secondCard = null;
+        this.locMode = false;
+    },
+ 
     techs: [
         'bootstrap',
         'css',
