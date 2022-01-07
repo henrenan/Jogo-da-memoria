@@ -68,7 +68,7 @@ const ICON = "icon"
                 firstCardView.classList.remove('flip');
                 secondCardView.classList.remove('flip');
                 game.clearCards();
-                }, 2000);
+                }, 1000);
             }
         }
     }
