@@ -28,7 +28,7 @@ const ICON = "icon"
             })
         }
 
-        function createCardContent(card, cardElement){
+        function createCardContent(card, cardElement) {
 
             createCardFace(FRONT, card, cardElement);
             createCardFace(BACK, card, cardElement);
@@ -62,6 +62,10 @@ const ICON = "icon"
             if (game.secondCard) {
                  if(game.checkMatch()) {
                     game.clearCards();
+                    if(game.checkGameOver()) {
+                        let gameOverLayer = document.getElementById("gameOver");
+                        gameOverLayer.style.display = 'flex';
+                    }
             }else{
                     setTimeout(()=> {
                     let firstCardView = document.getElementById(game.firstCard.id);
@@ -74,4 +78,8 @@ const ICON = "icon"
                 };
             }
         }
+    }
+
+    function restart() {
+         
     }

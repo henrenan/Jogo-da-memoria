@@ -6,9 +6,8 @@ let game = {
 
     setCard: function (id) {
 
-        let card = this.cards.filter(card => card.id === id)[0]
-        console.log(card);
-        if (card.flipped || this.locMode) {
+        let card = this.cards.filter(card => card.id === id)[0];
+        if (card.flipped || this.lockMode) {
             return false;
         }
 
@@ -16,7 +15,7 @@ let game = {
             this.firstCard = card;
             this.firstCard.flipped = true;
             return true;
-        }else{
+        }else{ 
             this.secondCard = card;
             this.secondCard.flipped = true;
             this.lockMode = true;
@@ -26,22 +25,28 @@ let game = {
     },
 
     checkMatch: function () {
-        if(!this.firstCard || !this.secondCard) {
+        if (!this.firstCard || !this.secondCard) {
         return false;
-
         }
+        return this.firstCard.icon === this.secondCard.icon;
     },
 
     clearCards: function () {
         this.firstCard = null;
         this.secondCard = null;
-        this.locMode = false;
+        this.lockMode = false;
     },
 
     unflipCards() {
         this.firstCard.flipped = false;
         this.secondCard.flipped = false;
         this.clearCards();
+    },
+
+    checkGameOver() {
+
+        return this.cards.filter(card=>!card.flipped).length == 0;
+
     },
  
     techs: [
@@ -56,7 +61,7 @@ let game = {
         'node',
         'react'],
 
-    cards : null,
+    cards: null,
 
     createCardsFromTechs: function() {
 
