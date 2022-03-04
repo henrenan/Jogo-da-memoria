@@ -9,11 +9,12 @@ const ICON = "icon"
         function startGame() {
              
              initializeCards(game.createCardsFromTechs());
+
         }
 
         function initializeCards(cards) {
-            let gameBoard = document.getElementById("gameBoard")
-            
+            let gameBoard = document.getElementById("gameBoard");
+            gameBoard.innerHTML = ''; 
             game.cards.forEach(card=> {
 
                 let cardElement = document.createElement('div');
@@ -64,7 +65,7 @@ const ICON = "icon"
                     game.clearCards();
                     if(game.checkGameOver()) {
                         let gameOverLayer = document.getElementById("gameOver");
-                        gameOverLayer.style.display = 'flex';
+                        gameOverLayer   .style.display = 'flex';
                     }
             }else{
                     setTimeout(()=> {
@@ -80,6 +81,10 @@ const ICON = "icon"
         }
     }
 
+
     function restart() {
-         
+        game.clearCards();
+        startGame();
+        let gameOverLayer = document.getElementById("gameOver");
+        gameOverLayer.style.display = 'none';
     }

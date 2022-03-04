@@ -63,11 +63,11 @@ let game = {
 
     cards: null,
 
-    createCardsFromTechs: function() {
+    createCardsFromTechs: function () {
 
         this.cards = [];
 
-        this.techs.forEach((tech) =>{
+        this.techs.forEach((tech) => {
             this.cards.push(this.createPairFromTech(tech));
         })
         
@@ -104,9 +104,9 @@ createPairFromTech: function (tech) {
                 randomIndex = Math.floor(Math.random() * currentIndex);
                 currentIndex--;
 
-                [this.cards[randomIndex], this.cards[currentIndex] = this.cards[currentIndex], this.cards[randomIndex]]
-
+                [this.cards[randomIndex], this.cards[currentIndex] = this.cards[currentIndex], this.cards[randomIndex]];
         }
     }
 
 }
+
