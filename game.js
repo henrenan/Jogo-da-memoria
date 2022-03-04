@@ -105,6 +105,7 @@ createPairFromTech: function (tech) {
                 currentIndex--;
 
                 [this.cards[randomIndex], this.cards[currentIndex] = this.cards[currentIndex], this.cards[randomIndex]];
+                
         }
     }
 
